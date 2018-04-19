@@ -1,0 +1,90 @@
+<div class="col-md-12">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+        <li><a href="#/budgets">{{'label.anchor.budgets' | translate}}</a></li>
+        <li class="active">{{'label.anchor.editbudget' | translate}}</li>
+    </ul>
+    <div class="card">
+        <div class="content">
+            <form name="editbudgetform" novalidate="" class="form-horizontal"
+                ng-controller="EditBudgetController" rc-submit="submit()">
+                <api-validate></api-validate>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.budget.name' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input id="name" ng-autofocus="true" type="text" name="name" ng-model="formData.name" class="form-control"
+                                   required />
+                        </div>
+                        <div class="col-sm-3">
+                            <form-validate valattributeform="editbudgetform" valattribute="name"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.teller.office' | translate }}<span class="required">*</span></label>
+                        <div class="col-sm-3">
+                            {{officeName}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.teller.description' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input id="description" ng-autofocus="true" type="text" name="description" ng-model="formData.description" class="form-control"
+                                   required />
+                        </div>
+                    </div>
+
+					<div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.submittedDate' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input name="submittedDate" id="submittedDate" sort type="text" datepicker-pop="dd MMMM yyyy" ng-model="formData.submittedDate"
+                                   class="form-control" is-open="opened" min="minDate" max="restrictDate" required />
+                        </div>
+                        <div class="col-sm-3">
+                            <form-validate valattributeform="editbudgetform" valattribute="submittedDate"/>
+                        </div>
+                    </div>
+					
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.teller.startDate' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input name="startDate" id="startDate" sort type="text" datepicker-pop="dd MMMM yyyy" ng-model="formData.startDate"
+                                   class="form-control" is-open="opened" min="minDate" max="restrictDate" required />
+                        </div>
+                        <div class="col-sm-3">
+                            <form-validate valattributeform="editbudgetform" valattribute="startDate"/>
+                        </div>
+                    </div>
+					
+					
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.teller.endDate' | translate }}</label>
+
+                        <div class="col-sm-3">
+                            <input id="endDate" sort type="text" datepicker-pop="dd MMMM yyyy" ng-model="formData.endDate"
+                                   class="form-control" is-open="opened" min="minDate" />
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-3">
+                        <a id="cancel" href="#/budgets/{{budgetId}}/items">
+                            <button type="reset" class="btn btn-default">{{'label.button.cancel' | translate}}</button>
+                        </a>
+                        <button id="save" type="submit" class="btn btn-primary" has-permission='UPDATE_BUDGET'>{{'label.button.save' | translate}}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

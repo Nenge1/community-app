@@ -1,0 +1,33 @@
+<div class="content-container" ng-controller="BudgetActionsController">
+    <ul class="breadcrumb">
+        <li><a href="#/budgets">{{'label.anchor.viewbudget' | translate}}</a></li>
+        <li class="active">{{action}}</li>
+    </ul>
+    <div class="card">
+        <div class="content">
+            <div class="toolbar">
+                <h4>{{ title | translate}}</h4>
+            </div>
+            <br>
+            <form name="budgetactionform" novalidate="" class="form-horizontal" ng-submit="submit()">
+                <api-validate></api-validate>
+                <fieldset>
+				    <div class="form-group" ng-show="showDateField">
+                        <label class="control-label col-sm-2" for="modelName">{{labelName | translate}}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input id="{{modelName}}" type="text" sort datepicker-pop="dd MMMM yyyy"
+                                   ng-model="formData[modelName]" is-open="opened" min="minDate" max="restrictDate" class="form-control"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-offset-3" ng-hide="showDelete">
+                        <button id="cancel" ng-click="cancel()" class="btn btn-default">{{ 'label.button.cancel' | translate }}</button>
+                        <button id="save" type="submit" has-permission='{{taskPermissionName}}' class="btn btn-primary">{{ 'label.button.save' | translate }}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

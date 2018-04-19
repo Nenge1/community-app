@@ -1,0 +1,48 @@
+<div class="content-container" ng-controller="BudgetsController">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+        <li class="active">{{'label.anchor.budgets' | translate}}</li>
+    </ul>
+
+<div class="card" >
+<div class="content">
+    <div class="toolbar">
+        <div class="row">
+            <div class="col-md-6">
+                <input ng-autofocus="true" ng-model="filterText" type="text" class="form-control col-md-6" placeholder="{{'label.input.filterbyname' | translate}}">
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <a href="#/createbudget" class="btn btn-primary" has-permission='CREATE_BUDGET'><i class="fa fa-plus "></i>{{'label.button.createbudget' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div ng-hide="isTreeView">
+        <api-validate></api-validate>
+        <table class="table">
+            <thead>
+            <tr class="graybg">
+                <th>{{'label.heading.budget.officeName' | translate}}</th>
+                <th>{{'label.heading.budget.budgetName' | translate}}</th>                
+                <th>{{'label.heading.budget.budgetstartDate' | translate}}</th>
+                <th>{{'label.heading.budget.budgetendDate' | translate}}</th>
+				<th>{{'Status' | translate}}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="pointer-main" ng-repeat="budget in budgets| orderBy:'budget.officeName' | orderBy:'name'  | filter:filterText">
+                <td class="pointer" data-ng-click="routeToItems(budget.id)">{{budget.officeName}}</td>
+                <td class="pointer" data-ng-click="routeToItems(budget.id)">{{budget.name}}</td>
+                <td class="pointer" data-ng-click="routeToItems(budget.id)">{{budget.startDate | DateFormat}}</td>
+                <td class="pointer" data-ng-click="routeToItems(budget.id)">{{budget.endDate | DateFormat}}</td>
+				<td class="pointer" data-ng-click="routeToItems(budget.id)">{{budget.status.value}}</td>
+               
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

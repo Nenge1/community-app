@@ -392,6 +392,45 @@
             .when('/viewprovisioningjournalentry/:entryId',{
                 templateUrl: 'views/accounting/provisioning/ViewProvisioningJournalEntries.html'
             })
+            .when('/budgets', {
+                templateUrl: 'views/accounting/budget/budgets.html'
+            })
+            .when('/createbudget', {
+                templateUrl: 'views/accounting/budget/createbudget.html'
+            })
+            .when('/editbudget/:id', {
+                templateUrl: 'views/accounting/budget/editbudget.html'
+            })
+            .when('/viewbudgets/:id', {
+                templateUrl: 'views/accounting/budget/viewbudget.html'
+            })
+            .when('/budgetorypositions', {
+                templateUrl: 'views/accounting/budget/budgetoryPositions.html'
+            })
+            .when('/viewBudgetoryPosition/:id', {
+                templateUrl: 'views/accounting/budget/viewBudgetoryPosition.html'
+            })
+            .when('/createBudgetoryPosition', {
+                templateUrl: 'views/accounting/budget/createBudgetoryPosition.html'
+            })
+            .when('/editBudgetoryPosition/:id', {
+                templateUrl: 'views/accounting/budget/editBudgetoryPosition.html'
+            })
+             .when('/budgets/:budgetId/items', {
+                templateUrl: 'views/accounting/budget/itemsForBudget.html'
+            })
+            .when('/budgets/:budgetId/items/:itemId', {
+                templateUrl: 'views/accounting/budget/viewitemForBudget.html'
+            })
+            .when('/budgets/:budgetId/:action', {
+                templateUrl: 'views/accounting/budget/budgetActions.html'
+            })
+            .when('/createItem/:budgetId', {
+                templateUrl: 'views/accounting/budget/createItem.html'
+            })
+            .when('/budgets/:budgetId/editItem/:itemId', {
+                templateUrl: 'views/accounting/budget/editItem.html'
+            })
             .when('/viewcode/:id', {
                 templateUrl: 'views/system/viewcode.html'
             })

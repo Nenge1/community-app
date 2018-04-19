@@ -1,0 +1,58 @@
+<div class="content-container" ng-controller="ViewItemController">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+        <li><a href="#/budgets/{{item.budgetId}}/items">{{ 'label.heading.budget.itemName' | translate }}</a> </li>
+        <li class="active">{{item.name}}</li>
+    </ul>
+
+    <div class="card">
+        <div class="content">
+            <div class="toolbar">
+			<h4>{{ 'label.heading.budget.itemName' | translate }} : {{item.name}}</h4>               
+            </div>
+            <br>
+            <table class="table-bordered table view-table" style="width: 350px">
+                <tr>
+                    <td>{{ 'label.heading.budget.budgetName' | translate }}</td>
+                    <td>{{item.budgetName}}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.input.budget.description' | translate }}</td>
+                    <td>{{item.description}}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.input.budget.startDate' | translate }}</td>
+                    <td>{{item.startDate | DateFormat }}</td>
+                </tr>
+                <tr>
+                    <td>{{ 'label.input.budget.endDate' | translate }}</td>
+                    <td>{{item.endDate | DateFormat }}</td>
+                </tr>
+				<tr>
+                    <td>{{ 'label.input.budget.plannedAmount' | translate }}</td>
+                    <td>{{item.plannedAmount }}</td>
+                </tr>
+				<tr>
+                    <td>{{ 'label.input.budget.actualAmount' | translate }}</td>
+                    <td>{{item.actualAmount}}</td>
+                </tr>
+				<tr>
+                    <td>{{ 'label.input.budget.variance' | translate }}</td>
+                    <td>{{item.variance}}</td>
+                </tr>
+				<tr>
+                    <td>{{ 'label.input.budget.AccountName' | translate }}</td>
+                    <td>{{item.glAccountName}}</td>
+                </tr>
+				<tr>
+                    <td>{{ 'label.input.budget.budgetSourceType' | translate }}</td>
+                    <td>{{item.endDate}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+

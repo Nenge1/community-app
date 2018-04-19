@@ -524,6 +524,29 @@
                         get: {method: 'GET', params: {}, isArray : true},
                         put: {method: 'PUT', params:{}}
                     }),
+
+                    budgetResource: defineResource(apiVer + "/budgets/:budgetId", {budgetId: "@budgetId"}, {
+                        getAllBudgets: {method: 'GET', params: {}, isArray: true},
+                        get: {method: 'GET', params: {budgetId: '@budgetId'}},
+                        update: { method: 'PUT', params: {budgetId: '@budgetId'}},
+                        delete: { method: 'DELETE', params: {budgetId: '@budgetId'}}
+                    }),
+                    budgetItemResource: defineResource(apiVer + "/budgets/:budgetId/items/:itemId", {budgetId: "@budgetId", itemId: "@itemId"}, {
+                        getAllItemsForBudget: {method: 'GET', params: {budgetId: "@budgetId"}, isArray: true},
+                        getItem: {method: 'GET', params:{budgetId: "@budgetId", itemId: "@itemId"}},
+                        update: { method: 'PUT', params: {budgetId: "@budgetId", itemId: "@itemId"}}
+                    }),
+
+                    budgetorypositionsResource: defineResource(apiVer + "/budgetorypositions/:budgetoryPositionId", {budgetoryPositionId: '@budgetoryPositionId'}, {
+                    getAllbudgetorypositions: {method: 'GET', params: {}, isArray: true},
+                    getbudgetoryposition: {method: 'GET', params: {}},
+                    update: {method: 'PUT', params: {}}
+                    }),
+                    budgetorypositionTemplateResource: defineResource(apiVer + "/budgetorypositions/template", {
+                        get: {method: 'GET', params: {}, isArray: true},
+                        getBudgetoryPositionTemplates: {method: 'GET', params: {}}
+                    }),  
+                    
                     passwordPrefResource : defineResource(apiVer + "/passwordpreferences", {}, {
                         put: {method: 'PUT', params:{}}
                     }),

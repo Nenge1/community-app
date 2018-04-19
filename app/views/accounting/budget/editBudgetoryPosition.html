@@ -1,0 +1,58 @@
+<div class="col-md-12">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+        <li><a href="#/budgetorypositions">{{'label.anchor.budgetoryPosition' | translate}}</a></li>
+        <li class="active">{{'label.anchor.editbudgetoryposition' | translate}}</li>
+    </ul>
+    <div class="card">
+        <div class="content">
+            <form name="editbudgetform" novalidate="" class="form-horizontal"
+                ng-controller="EditBudgetoryPositionController" rc-submit="submit()">
+                <api-validate></api-validate>
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.budget.name' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input id="name" ng-autofocus="true" type="text" name="name" ng-model="formData.name" class="form-control"
+                                   required />
+                        </div>
+                        <div class="col-sm-3">
+                            <form-validate valattributeform="editbudgetoryform" valattribute="name"/>
+                        </div>
+                    </div>                  
+
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.budget.description' | translate }}<span
+                                class="required">*</span></label>
+
+                        <div class="col-sm-3">
+                            <input id="description" ng-autofocus="true" type="text" name="description" ng-model="formData.description" class="form-control"
+                                   required />
+                        </div>
+                    </div>    
+                    <div class="form-group">
+                        <label class="control-label col-sm-2">{{ 'label.input.budget.type' | translate }}<span
+                                class="required">*</span></label>
+                        <div class="col-sm-3">
+                            <select id="usage" name="usage" ng-model="formData.type"
+                                    ng-options="typeStatus.id as typeStatus.value for typeStatus in typeStatuses"
+                                    value="{{typeStatus.id}}" class="form-control"></select>
+                        </div>
+                        <div class="col-sm-3">
+                            <form-validate valattributeform="editbudgetoryform" valattribute="usage"/>
+                        </div>
+                    </div>					
+
+                    <div class="col-md-offset-3">
+                        <a id="cancel" href="#/budgetorypositions">
+                            <button type="reset" class="btn btn-default">{{'label.button.cancel' | translate}}</button>
+                        </a>
+                        <button id="save" type="submit" class="btn btn-primary" has-permission='UPDATE_BUDGETORYPOSITION'>{{'label.button.save' | translate}}</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

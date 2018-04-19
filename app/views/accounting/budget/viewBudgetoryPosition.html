@@ -1,0 +1,35 @@
+<div class="content-container" ng-controller="ViewBudgetoryPositionController">
+	<ul class="breadcrumb">
+	    <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+	    <li><a href="#/budgetorypositions">{{'label.anchor.budgetoryPosition' | translate}}</a></li>
+	    <li class="active">{{budgetoryPosition.name}}</li>
+	</ul>
+	<div class="card">
+        <div class="content">
+            <div class="toolbar">
+                <h4>{{budgetoryPosition.name}}</h4>
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <a href="#/editBudgetoryPosition/{{budgetoryPosition.id}}" class="btn btn-primary" has-permission='UPDATE_BUDGETORYPOSITION'><i class="fa fa-edit "></i>{{
+                            'label.button.edit' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+                    <table class="table-bordered table view-table" style="width: 500px">
+                        <tr>
+							<td>{{ 'label.input.budget.name' | translate }}</td>
+							<td>{{budgetoryPosition.name}}</td>
+						</tr>
+						<tr>
+							<td>{{ 'label.input.budget.description' | translate }}</td>
+							<td>{{budgetoryPosition.description}}</td>
+						</tr>                                             
+                        <tr>
+                            <td>{{ 'label.input.budget.type' | translate }}</td>
+                            <td>{{budgetoryPosition.type}}</td>
+                        </tr>
+                    </table>
+        </div>
+    </div>
+</div>

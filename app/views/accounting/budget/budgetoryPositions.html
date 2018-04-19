@@ -1,0 +1,45 @@
+<div class="content-container" ng-controller="BudgetoryPositionsController">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+        <li class="active">{{'label.anchor.budgetoryPosition' | translate}}</li>
+    </ul>
+
+<div class="card" >
+<div class="content">
+    <div class="toolbar">
+        <div class="row">
+            <div class="col-md-6">
+                <input ng-autofocus="true" ng-model="filterText" type="text" class="form-control col-md-6" placeholder="{{'label.input.filterbyname' | translate}}">
+            </div>
+            <div class="col-md-6">
+                <div class="pull-right">
+                    <a href="#/createBudgetoryPosition" class="btn btn-primary" has-permission='CREATE_BUDGETORYPOSITION'><i class="fa fa-plus "></i>{{'label.button.creatbudgetoryPosition' | translate}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div ng-hide="isTreeView">
+        <api-validate></api-validate>
+        <table class="table">
+            <thead>
+            <tr class="graybg">
+                <th>{{'label.input.budget.name' | translate}}</th>                
+                <th>{{'label.heading.description' | translate}}</th>                
+                <th>{{'label.heading.budgetoryPosition.type' | translate}}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="pointer-main" ng-repeat="budgetoryposition in budgetorypositions| orderBy:'budgetoryposition.description' | orderBy:'name'  | filter:filterText">
+                <td class="pointer" data-ng-click="routeTo(budgetoryposition.id)">{{budgetoryposition.name}}</td>                
+                <td class="pointer" data-ng-click="routeTo(budgetoryposition.id)">{{budgetoryposition.description}}</td>       
+                <td class="pointer" data-ng-click="routeTo(budgetoryposition.id)">{{budgetoryposition.type}}</td>
+				<td >
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>

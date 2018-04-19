@@ -1,0 +1,82 @@
+<div class="content-container">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.organization' | translate}}</a></li>
+        <li><a href="#/budgets">{{'label.anchor.budgets' | translate}}</a></li>
+        <li class="active">{{'label.button.createItem' | translate}}</li>
+    </ul>
+    <div class="card">
+    	<div class="content">
+    		<form name="createbudgetform" novalidate="" class="form-horizontal" ng-controller="CreateItemForBudgetController" rc-submit="submit()">
+    		    <api-validate></api-validate>
+    		    <fieldset>
+    		        <legend>{{'label.button.createItem' | translate}}</legend>
+    		            						
+						<div class="form-group">
+							<label class="control-label col-sm-2">{{'label.heading.budget.glAccountId' | translate}}<span class="required">*</span></label>
+							<div class="col-sm-3">
+								<select id="glAccounts" chosen="glAccounts" ng-autofocus="true" class="form-control" ng-model="formData.glAccountId" ng-options="glAccount.id as glAccount.name + ' ' + glAccount.glCode for glAccount in glAccounts" value="{{glAccount.id}}">
+                                  <option class="displaynone" value="">{{'label.input.selectaccountnameorcode' | translate}}</option>
+                               </select>
+							</div>
+							<div class="col-sm-2">
+								<form-validate valattributeform="createitemform" valattribute="glAccountId"/>
+							</div>
+    			        </div>
+						
+						<div class="form-group">
+							<label class="control-label col-sm-2">{{'label.heading.budget.budgetoryposition' | translate}}<span class="required">*</span></label>
+							<div class="col-sm-3">
+								<select chosen="budgetorypositions" id="budgetoryPositionId" name="budgetoryPositionId" ng-model="formData.budgetoryPositionId" class="form-control"
+										ng-options="budgetoryposition.id as budgetoryposition.name for budgetoryposition in budgetorypositions"
+										value="{{budgetoryposition.id}}" required late-validate>
+								</select>
+							</div>
+							<div class="col-sm-2">
+								<form-validate valattributeform="createitemform" valattribute="budgetoryPositionId"/>
+							</div>
+    			        </div>
+
+    		            <div class="form-group">
+    		                <label class="control-label col-sm-2">{{ 'label.input.description' | translate }}</label>
+
+    		                <div class="col-sm-3">
+								<textarea id="description"  rows="2" type="text" name="description" ng-model="formData.description" class="form-control"/></textarea>
+    		                </div>                           
+    		            </div>
+
+    		            <div class="form-group">
+    		                <label class="control-label col-sm-2">{{ 'label.heading.budget.budgetstartDate' | translate }}<span
+    		                        class="required">*</span></label>
+
+    		                <div class="col-sm-3">
+    		                    <input id="startDate" sort type="text" datepicker-pop="dd MMMM yyyy" ng-model="formData.startDate"
+    		                           class="form-control" is-open="opened"/>
+    		                </div>
+    		            </div>
+
+    		            <div class="form-group">
+    		                <label class="control-label col-sm-2">{{ 'label.heading.budget.budgetendDate' | translate }}</label>
+
+    		                <div class="col-sm-3">
+    		                    <input id="endDate" sort type="text" datepicker-pop="dd MMMM yyyy" ng-model="formData.endDate"
+    		                           class="form-control" is-open="opened"/>
+    		                </div>
+    		            </div>
+
+                        <div class="form-group">
+							<label class="control-label col-sm-2">{{'label.heading.budget.plannedAmount' | translate}}</label>
+							<div class="col-sm-3">
+								<input id="plannedAmount" type="text" ng-model="formData.plannedAmount" class="form-control" />
+							</div>
+    			        </div>
+						<div class="col-md-offset-3">
+							<a id="cancel" href="#/budgets/{{budgetId}}/items">
+								<button type="reset" class="btn btn-default">{{'label.button.cancel' | translate}}</button>
+							</a>
+							<button id="save" type="submit" class="btn btn-primary" has-permission='CREATEITEM_BUDGET'>{{'label.button.save' | translate}}</button>
+						</div>
+    		    </fieldset>
+    		</form>
+    	</div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="content-container" ng-controller="ViewBudgetController">
+	<ul class="breadcrumb">
+	    <li><a href="#/accounting">{{'label.anchor.organization' | translate}}</a></li>
+	    <li><a href="#/budgets">{{'label.anchor.budgets' | translate}}</a></li>
+	    <li class="active">{{budget.name}}</li>
+	</ul>
+	<div class="card">
+        <div class="content">
+            <div class="toolbar">
+                <h4>{{budget.name}}</h4>
+                <div class="pull-right">
+                    <div class="btn-group">
+                        <a href="#/editbudget/{{budget.id}}" class="btn btn-primary" has-permission='UPDATE_BUDGET'><i class="fa fa-edit "></i>{{
+                            'label.button.edit' | translate }}</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+                    <table class="table-bordered table view-table" style="width: 350px">
+                        <tr>
+                            <td>{{ 'label.input.budget.office' | translate }}</td>
+                            <td>{{budget.officeName}}</td>
+                        </tr>
+                            <tr>
+                            <td>{{ 'label.input.budget.description' | translate }}</td>
+                            <td>{{budget.description}}</td>
+                        </tr>
+                            <tr>
+                            <td>{{ 'label.input.budget.startDate' | translate }}</td>
+                            <td>{{budget.startDate | DateFormat }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'label.input.budget.endDate' | translate }}</td>
+                            <td>{{budget.endDate | DateFormat }}</td>
+                        </tr>
+                        <tr>
+                            <td>{{ 'label.input.budget.status.value' | translate }}</td>
+                            <td>{{budget.status.value}}</td>
+                        </tr>
+                    </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="content-container" ng-controller="ViewItemsForBudgetController">
+    <ul class="breadcrumb">
+        <li><a href="#/accounting">{{'label.anchor.accounting' | translate}}</a></li>
+        <li><a href="#/budgets">{{'label.anchor.budgets' | translate}}</a></li>
+        <li class="active">{{itemsForBudget.name}}</li>
+    </ul>
+
+<div class="card" >
+<div class="content">
+   
+	<div class="pull-right btn-group">
+	   <a ng-repeat="button in buttons.singlebuttons" ng-show="button.name" ng-click="clickEvent(button.name.replace('button.',''), itemsForBudget.id)"
+	      class="btn btn-primary" has-permission='{{button.taskPermissionName}}'><i
+			class="{{button.icon}} "></i>&nbsp;{{'label.' + button.name |
+		translate}}</a>
+		
+			<a ng-repeat="button in buttonss.singlebuttonss" ng-show="button.name" ng-click="clickEvent(button.name.replace('button.',''), itemsForBudget.id)"
+		      class="btn btn-primary" ng-if="hasItems" has-permission='{{button.taskPermissionName}}'><i
+				class="{{button.icon}} "></i>&nbsp;{{'label.' + button.name |
+			translate}}</a>
+	 
+		
+    </div>
+
+    <div class="clear"></div>
+	<table class="table table-bordered" ng-show="hasItems">
+	    <div class="toolbar" ng-show="hasItems">
+	      <h4>{{'label.heading.budgetsummary' | translate}}</h4>
+        </div>
+		<thead>
+		<tr>
+			<th class="empty"></th>
+			<th>{{'label.heading.revenues' | translate}}</th>
+			<th>{{'label.heading.costs' | translate}}</th>
+			<th>{{'label.heading.profits' | translate}}</th>		
+		</tr>
+		<tbody>
+		<tr>
+			<th>{{'label.heading.PlannedAmounts' | translate}}</th>
+			<td>{{itemsForBudget.totalExpectedRevenues | number}}</td>
+			<td>{{itemsForBudget.totalExpectedCosts | number}}</td>
+			<td>{{itemsForBudget.totalProfitExpected | number}}</td>
+		</tr>
+		<tr>
+			<th>{{'label.heading.ActualAmounts' | translate}}</th>
+			<td>{{itemsForBudget.totalRevenuesEarned | number}}</td>
+			<td>{{itemsForBudget.totalCostsSpent | number}}</td>
+			<td>{{itemsForBudget.totalProfitCollected | number}}</td>
+		</tr>
+		</tbody>
+		<tfoot>
+		<tr>
+			<th>{{'label.heading.variance' | translate}}</th>
+			<td>{{itemsForBudget.totalRevenuesVariance | number}}</td>
+			<td>{{itemsForBudget.totalCostVariance | number}}</td>
+			<td>{{itemsForBudget.totalProfitVariance | number}}</td>
+		</tr>
+		</tfoot>
+    </table>
+	
+        <h4>{{'label.heading.listofitems' | translate}}</h4>
+		<br>
+		<br>
+		 <div class="row">
+            <div class="col-md-6">
+                <input ng-autofocus="true" ng-model="filterText" type="text" class="form-control col-md-6" placeholder="{{'label.input.filterbyname' | translate}}">
+            </div>
+        </div>
+	<br>
+    <div ng-hide="isTreeView">
+        <api-validate></api-validate>
+        <table class="table">
+            <thead>
+            <tr class="graybg">
+                <th>{{'label.anchor.budgetoryPosition' | translate}}</th>
+                <th>{{'label.heading.budget.glAccountId' | translate}}</th>                
+                <th>{{'label.heading.budget.budgetstartDate' | translate}}</th>
+                <th>{{'label.heading.budget.budgetendDate' | translate}}</th>
+                <th>{{'label.heading.ActualAmounts' | translate}}</th>
+                <th>{{'label.heading.PlannedAmounts' | translate}}</th>
+                <th>{{'label.heading.variance' | translate}}</th>
+				<th colspan = "2">{{'label.heading.actions' | translate}}</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="pointer-main" ng-repeat="item in items| orderBy:'item.item' | orderBy:'name'  | filter:filterText">
+                <td class="pointer" >{{item.budgetoryName}}</td>
+                <td class="pointer" >{{item.glAccountName}}</td>
+                <td class="pointer" >{{item.startDate | DateFormat}}</td>
+                <td class="pointer" >{{item.endDate | DateFormat}}</td>				
+                <td class="pointer" >{{item.actualAmount | number}}</td>				
+				<td class="pointer" >{{item.plannedAmount | number}}</td>               
+				<td class="pointer" >{{item.variance | number}}</td>               
+                <td> 
+				<span uib-tooltip="{{'label.heading.edititem' | translate }}" ng-if="itemsForBudget.status.value == 'Draft'" ng-click="routeToEdit(item.id)">
+                    <i class="fa fa-edit"></i>
+                        </span>
+                </td>
+				 <td> <span uib-tooltip="{{'label.anchor.viewitem' | translate}}" ng-click="routeToView(item.id)">
+					<i class="fa fa-eye"></i>
+				        </span>
+				</td>
+			</tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
